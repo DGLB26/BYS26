@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>বাংলার যুবসাথী প্রকল্প 2026</title>
+<link rel="icon" type="image/png" href="https://socialsecurity.wb.gov.in/images/biswo.webp">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Modern Reset & Font */
+* {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif;}
+
+/* Body - Vibrant Gradient Background */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg,  #4ceaff , #37fa72 );
+  color: #fff;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow-y: auto;
+  padding: 20px 0;
+}
+
+/* Glassmorphism Effect Base */
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  padding: 20px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 0 4px 8px rgb(17, 0, 255);
+}
+header h1 {
+  font-size: 38px;
+  color: #ff0000;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 
+     -2px -2px 0 #fff,
+   2px -2px 0 #fff,
+  -2px  2px 0 #fff,
+   2px  2px 0 #fff;
+}
+header h2 {
+  font-size: 20px;
+  color: #ffffff;
+  margin-top: 5px;
+  background: #f100cd;
+  padding: 5px 15px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+/* Navigation - Floating Glass Bar */
+nav {
+  display: flex; gap: 15px; margin-bottom: 40px;
+  padding: 8px 15px;
+  border-radius: 50px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+nav button {
+  background: transparent; border: none; color: #0004e7; font-weight: 600;
+  padding: 10px 20px; border-radius: 30px; cursor: pointer; transition: 0.3s;
+  font-size: 15px;
+}
+nav button:hover, nav button.active {
+  background: #0073ff;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Content Sections */
+.content {
+  display: none;
+  width: 90%; max-width: 900px;
+  text-align: center;
+  color: #000;
+  background: linear-gradient(90deg, #ffc5dd, #ffffff, #ffffff, #c8f7ff);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+.content.active {display: block; animation: fadeIn 0.5s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+.content h2 {color: #27d700; margin-bottom: 15px; font-weight: 700;}
+.content p {color: #3600f8; line-height: 1.8;}
+.content a {color: #ff1dbb; font-weight: 600; text-decoration: none;}
+
+/* Modal */
+.modal {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7); display: none;
+  align-items: center; justify-content: center; z-index: 1000;
+}
+.modal.active {display: flex;}
+.modal-content {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  padding: 30px;
+  width: 90%; max-width: 750px;
+  max-height: 90vh; overflow-y: auto;
+  color: #333;
+  animation: pop 0.4s ease;
+  position: relative;
+}
+@keyframes pop{from{transform:scale(0.9);opacity:0;}to{transform:scale(1);opacity:1;}}
+.close {
+  position: absolute; top: 5px; right: 5px;
+  font-size: 35px; color: #ff0015; cursor: pointer; font-weight: 300;
+  transition: transform 0.2s;
+}
+.close:hover {transform: rotate(90deg);}
+
+/* Form Styling */
+.rg {
+  padding: 15px 20px;
+  text-align: center;
+  background: linear-gradient(90deg, #ff003c, #ffea00, #40e100);
+  border-radius: 15px;
+  color: #000;
+  font-size: 18px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 25px;
+}
+.rg h1 { color: #3b29ff; text-shadow: 0 2px 6px rgb(255, 255, 255); }
+.rg h2 {font-size: 16px; margin-top: 5px; color: #ffffff;}
+
+form label {display: block; margin-top: 15px; font-weight: 600; color: #444;}
+form input, form select, form textarea {
+  width: 100%; padding: 12px; border-radius: 8px;
+  border: 2px solid #ddd;
+  margin-top: 8px; font-size: 15px;
+  transition: border-color 0.3s;
+}
+form input:focus, form select:focus, form textarea:focus {
+  border-color: #04abff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 111, 145, 0.5);
+}
+
+.two {display: grid; grid-template-columns: 1fr 1fr; gap: 20px;}
+@media (max-width: 600px) {.two {grid-template-columns: 1fr;}}
+
+/* Submit Button */
+button.submit {
+  margin-top: 30px; width: 100%; padding: 16px; border: none;
+  background: linear-gradient(90deg, #0e96fd, #00C9A7);
+  border-radius: 12px; color: #fff; font-weight: 700; font-size: 18px;
+  cursor: pointer; transition: 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+button.submit:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+#status {
+  text-align: center; margin-top: 15px; font-weight: 600;
+  font-size: 16px; padding: 10px;
+}
+
+/* Scrollbar styling for modal */
+.modal-content::-webkit-scrollbar {width: 2px;}
+.modal-content::-webkit-scrollbar-track {background: #f1f1f100; border-radius: 10px;}
+.modal-content::-webkit-scrollbar-thumb {background: #6fb9ff00; border-radius: 10px;}
+
+/* ---------- MOBILE-FRIENDLY IMPROVEMENTS ---------- */
+@media (max-width: 768px) {
+  body {padding: 10px;}
+  header h1 {font-size: 26px; text-shadow: none;}
+  header h2 {font-size: 14px; padding: 6px 10px; display: block; margin-top: 8px;}
+
+  nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 15px;
+  }
+  nav button {
+    flex: 0 0 auto;
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+
+  .content {
+    width: 100%;
+    padding: 20px 15px;
+    font-size: 15px;
+  }
+  .content h2 {font-size: 20px;}
+
+  .modal-content {
+    width: 95%;
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 15px;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  form input, form select, form textarea {
+    font-size: 16px;
+    padding: 14px;
+  }
+  .two {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  button.submit {
+    font-size: 17px;
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  #status {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 400px) {
+  header h1 { font-size: 22px; }
+  nav button { font-size: 12px; padding: 6px 10px; }
+  form label { font-size: 14px; }
+}
+</style>
+
+</head>
+<body>
+
+<header>
+  <h1>বাংলার যুবসাথী প্রকল্প 2026</h1>
+  <h2>Digital Registration Portal - Digi World Tapan</h2>
+</header>
+
+<nav>
+  <button id="btn-home" class="active" onclick="showContent('home', this)">Home</button>
+  <button id="btn-about" onclick="showContent('about', this)">About</button>
+  <button id="btn-contact" onclick="showContent('contact', this)">Contact</button>
+  <button onclick="openModal('registerModal')">Register</button>
+</nav>
+
+<div id="home" class="content active">
+
+  <h2 style="margin-bottom:15px;">🌟 বাংলার যুবসাথী প্রকল্প ২০২৬</h2>
+
+  <p style="margin-bottom:20px; line-height:1.6;">
+    <b>বাংলার যুবসাথী প্রকল্প</b> পশ্চিমবঙ্গ সরকারের একটি গুরুত্বপূর্ণ সামাজিক উদ্যোগ,
+    যার মাধ্যমে রাজ্যের শিক্ষিত ও বেকার যুবক-যুবতীদের মাসিক আর্থিক সহায়তা প্রদান করা হয়।
+    এই প্রকল্পের লক্ষ্য হলো যুব সমাজকে স্বনির্ভর করে তোলা এবং কর্মসংস্থানের জন্য প্রস্তুত করা।
+  </p>
+
+  <!-- TWO COLUMN SECTION -->
+  <div style="display:flex; gap:20px; flex-wrap:wrap;">
+
+    <!-- LEFT SIDE -->
+    <div style="flex:1; min-width:280px; background:#ffffff; padding:15px; border-radius:12px;">
+
+      <h3 style="color:#0073ff; margin-bottom:8px;">🎯 প্রকল্পের উদ্দেশ্য</h3>
+      <ul style="text-align:left; line-height:1.6; color:#333; margin-bottom:15px;">
+        <li>বেকার যুবকদের আর্থিক সহায়তা প্রদান</li>
+        <li>চাকরির প্রস্তুতি ও স্কিল ডেভেলপমেন্ট</li>
+        <li>আত্মনির্ভর যুব সমাজ গঠন</li>
+        <li>দারিদ্র্য হ্রাস ও সামাজিক উন্নয়ন</li>
+      </ul>
+
+      <h3 style="color:#00a86b; margin-bottom:8px;">💰 আর্থিক সুবিধা</h3>
+      <p style="color:#333; line-height:1.6;">
+        নির্বাচিত প্রার্থীদের প্রতি মাসে <b style="color:red;">₹১,৫০০ টাকা</b>
+        সরাসরি ব্যাঙ্ক অ্যাকাউন্টে (DBT মাধ্যমে) প্রদান করা হয়।
+        এই সহায়তা সর্বোচ্চ ৫ বছর বা চাকরি পাওয়া পর্যন্ত চলতে পারে।
+      </p>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div style="flex:1; min-width:280px; background:#f9f9f9; padding:15px; border-radius:12px;">
+
+      <h3 style="color:#d63384; margin-bottom:8px;">✅ যোগ্যতা</h3>
+      <ul style="text-align:left; line-height:1.6; color:#333; margin-bottom:15px;">
+        <li>পশ্চিমবঙ্গের স্থায়ী বাসিন্দা</li>
+        <li>বয়স ২১ থেকে ৪০ বছরের মধ্যে</li>
+        <li>কমপক্ষে মাধ্যমিক পাশ</li>
+        <li>বর্তমানে বেকার হতে হবে</li>
+        <li>আধার সংযুক্ত ব্যাঙ্ক অ্যাকাউন্ট</li>
+      </ul>
+
+      <h3 style="color:#ff8c00; margin-bottom:8px;">📝 আবেদন প্রক্রিয়া</h3>
+      <p style="color:#333; line-height:1.6;">
+        আবেদনকারীকে অনলাইনে নিবন্ধন করে আবেদন ফর্ম পূরণ করতে হবে।
+        আবেদন সফল হলে একটি রেফারেন্স নম্বর প্রদান করা হবে,
+        যার মাধ্যমে আবেদন স্ট্যাটাস অনলাইনে চেক করা যাবে।
+      </p>
+
+    </div>
+
+  </div>
+
+  <p style="margin-top:20px; font-weight:600; color:#000;">
+    📍 আমাদের পোর্টাল <b>Digi World, তপন, দক্ষিণ দিনাজপুর</b> এ দ্রুত, নিরাপদ ও
+    ঝামেলামুক্ত ডিজিটাল রেজিস্ট্রেশন পরিষেবা প্রদান করা হয়।
+  </p>
+
+</div>
+
+
+<div id="about" class="content">
+
+  <h2 style="margin-bottom:15px;">ℹ️ আমাদের সম্পর্কে</h2>
+
+  <p style="margin-bottom:20px; line-height:1.6;">
+    <b>Digi World - তপন, দক্ষিণ দিনাজপুর</b> একটি বিশ্বস্ত ডিজিটাল সার্ভিস সেন্টার,
+    যেখানে বিভিন্ন সরকারি প্রকল্পের অনলাইন আবেদন, সংশোধন ও তথ্য যাচাই পরিষেবা প্রদান করা হয়।
+    আমরা দ্রুত, সঠিক ও স্বচ্ছ পরিষেবার মাধ্যমে সাধারণ মানুষের পাশে থাকার অঙ্গীকার করি।
+  </p>
+
+  <div style="display:flex; gap:20px; flex-wrap:wrap;">
+
+    <!-- LEFT SIDE -->
+    <div style="flex:1; min-width:280px; background:#ffffff; padding:15px; border-radius:12px;">
+
+      <h3 style="color:#0073ff; margin-bottom:8px;">🎯 আমাদের লক্ষ্য</h3>
+      <ul style="text-align:left; line-height:1.6; color:#333;">
+        <li>সরকারি প্রকল্পে সহজ অনলাইন নিবন্ধন</li>
+        <li>গ্রামীণ ও শহর অঞ্চলের নাগরিকদের সহায়তা</li>
+        <li>ডিজিটাল পরিষেবাকে সবার কাছে পৌঁছে দেওয়া</li>
+        <li>স্বচ্ছ ও নির্ভুল ডাটা এন্ট্রি পরিষেবা</li>
+      </ul>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div style="flex:1; min-width:280px; background:#f4f9ff; padding:15px; border-radius:12px;">
+
+      <h3 style="color:#00a86b; margin-bottom:8px;">💼 আমাদের পরিষেবা</h3>
+      <ul style="text-align:left; line-height:1.6; color:#333;">
+        <li>বাংলার যুবসাথী প্রকল্প রেজিস্ট্রেশন</li>
+        <li>লক্ষ্মীর ভাণ্ডার আবেদন সহায়তা</li>
+        <li>আধার, ভোটার ও ব্যাঙ্ক তথ্য সংশোধন</li>
+        <li>অনলাইন ফর্ম ফিলাপ ও প্রিন্ট সার্ভিস</li>
+        <li>ডিজিটাল ডকুমেন্ট আপলোড ও সাবমিশন</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <p style="margin-top:20px; font-weight:600; color:#000;">
+    📍 আমরা সর্বদা চেষ্টা করি যাতে আবেদনকারীরা কোনো ঝামেলা ছাড়াই দ্রুত পরিষেবা পান।
+    আপনার বিশ্বাসই আমাদের শক্তি।
+  </p>
+
+</div>
+
+
+<div id="contact" class="content">
+
+  <h2 style="margin-bottom:15px;">📞 যোগাযোগ করুন</h2>
+
+  <p style="margin-bottom:20px; line-height:1.6;">
+    আমাদের সাথে যোগাযোগ করতে নিচের তথ্য ব্যবহার করুন।
+    আমরা দ্রুত ও নির্ভুল পরিষেবা প্রদানের জন্য সর্বদা প্রস্তুত।
+  </p>
+
+  <div style="display:flex; gap:20px; flex-wrap:wrap;">
+
+    <!-- LEFT SIDE -->
+    <div style="flex:1; min-width:280px; background:#ffffff; padding:15px; border-radius:12px;">
+
+      <h3 style="color:#0073ff; margin-bottom:8px;">🏢 অফিস ঠিকানা</h3>
+      <p style="color:#333; line-height:1.6;">
+        <a href="am.html">🌐</a><b>DIGI WORLD</b><br>
+        তপন, দক্ষিণ দিনাজপুর<br>
+        পশ্চিমবঙ্গ - 733127
+      </p>
+
+      <br>
+
+      <h3 style="color:#00a86b; margin-bottom:8px;">📍 লোকেশন</h3>
+      <p>
+        <a href="https://maps.google.com" target="_blank" style="color:#ff0066; font-weight:600;">
+          Google Maps এ দেখুন
+        </a>
+      </p>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div style="flex:1; min-width:280px; background:#f9f9f9; padding:15px; border-radius:12px;">
+
+      <h3 style="color:#d63384; margin-bottom:8px;">📱 যোগাযোগ নম্বর</h3>
+      <p style="color:#333; font-size:18px; font-weight:600;">
+        9064899089
+      </p>
+
+      <br>
+
+      <h3 style="color:#ff8c00; margin-bottom:8px;">⏰ পরিষেবা সময়</h3>
+      <p style="color:#333; line-height:1.6;">
+        প্রতিদিন সকাল ৯টা – সন্ধ্যা ৭টা<br>
+        (রবিবার খোলা থাকতে পারে)
+      </p>
+
+    </div>
+
+  </div>
+
+  <p style="margin-top:20px; font-weight:600; color:#000;">
+    📌 যেকোনো সরকারি প্রকল্পের অনলাইন আবেদন ও ডিজিটাল পরিষেবার জন্য আমাদের সাথে যোগাযোগ করুন।
+  </p>
+
+</div>
+
+
+<div id="registerModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('registerModal')">×</span>
+    <header class="rg">
+      <h1>বাংলার যুবসাথী প্রকল্প 2026</h1>
+      <h2>Registration Form</h2>
+    </header>
+
+    <form id="regForm">
+
+  <!-- PERSONAL DETAILS SECTION -->
+<div style="margin-top:20px; padding:15px; background:#fff9f0; border-radius:12px;">
+
+  <h3 style="margin-bottom:15px; color:#ff8c00;">👤 Personal Details</h3>
+  <label>Name</label>
+  <input id="name" name="Name" type="text" required />
+
+  <div class="two" style="grid-template-columns: 1fr 1fr 1fr;">
+
+  <div>
+    <label>Date of Birth</label>
+    <input id="dob" name="Date_of_Birth" type="date" required />
+  </div>
+
+  <div>
+    <label>Age (as on 01/04/2026)</label>
+    <input type="text" id="ageDisplay" readonly />
+    <input type="hidden" id="ageValue" name="Age_2026" />
+  </div>
+
+  <div>
+    <label>Gender</label>
+    <select name="Gender" required>
+      <option value="">-- Select --</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+  </div>
+
+</div>
+
+
+  <div class="two">
+    <div>
+      <label>Father's Name</label>
+      <input id="father" name="Father_Name" type="text" required />
+    </div>
+    <div>
+      <label>Mother's Name</label>
+      <input id="mother" name="Mother_Name" type="text" required />
+    </div>
+  </div>
+
+  <div class="two">
+    <div>
+      <label>Marital Status</label>
+      <select name="Marital_Status" required>
+        <option value="">-- Select --</option>
+        <option>Married</option>
+        <option>Unmarried</option>
+        <option>Widow</option>
+        <option>Divorced</option>
+      </select>
+    </div>
+    <div>
+      <label>Spouse Name (if applicable)</label>
+  <input id="spouse" name="Spouse_Name" type="text" />
+      
+    </div>
+  </div>
+</div>
+
+  <!-- IDENTIFICATION DETAILS SECTION -->
+<div style="margin-top:20px; padding:15px; background:#f5f0ff; border-radius:12px;">
+
+  <h3 style="margin-bottom:15px; color:#6f42c1;">🪪 Identification Details</h3>
+  <div class="two">
+    <div>
+      <label>Aadhaar Number</label>
+      <input id="aadhaar" name="Aadhaar_Number" maxlength="12" pattern="\d*" inputmode="numeric" required />
+    </div>
+    <div>
+      <label>Voter Number</label>
+      <input id="voter" name="Voter_Number" type="text" />
+    </div>
+  </div>
+
+  <div class="two">
+    <div>
+      
+  <label>Caste Category</label>
+  <select name="Caste_Category" required>
+    <option value="">-- Select --</option>
+    <option>General</option>
+    <option>SC</option>
+    <option>ST</option>
+    <option>Others</option>
+  </select>
+    </div>
+    <div>
+      <label>Caste Certificate Number</label>
+      <input id="caste" name="Caste_Number" type="text" />
+    </div>
+  </div>
+  </div>
+
+  <!-- MP Examination Details -->
+<div style="margin-top:20px; padding:15px; background:#f4f9ff; border-radius:12px;">
+
+  <h3 style="margin-bottom:15px; color:#0073ff;">🎓 MP Examination Details</h3>
+
+  <div class="two">
+
+    <div>
+      <label>Roll Number</label>
+      <input name="MP_Roll_No" type="text" required />
+    </div>
+
+    <div>
+      <label>Passing Year</label>
+      <input name="MP_Year" type="number" min="1990" max="2026" required />
+    </div>
+
+  </div>
+
+  <div style="margin-top:15px;">
+    <label>Board</label>
+    <select name="MP_Board" required>
+      <option value="">-- Select Board --</option>
+      <option>WBBSE</option>
+      <option>CBSE</option>
+      <option>ICSE</option>
+      <option>WBBME</option>
+      <option>Others</option>
+    </select>
+  </div>
+
+</div>
+<div class="two" style="margin-top:15px;">
+
+  <div>
+    <label>Highest Education Qualification</label>
+    <select name="Highest_Education" required>
+      <option value="">-- Select Qualification --</option>
+      <option>Madhyamik</option>
+      <option>Higher Secondary</option>
+      <option>Graduate</option>
+      <option>Post Graduate</option>
+      <option>Diploma</option>
+      <option>Others</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Present Occupation</label>
+    <select name="Present_Occupation" required>
+      <option value="">-- Select Occupation --</option>
+      <option>Unemployed</option>
+      <option>Student</option>
+      <option>Self Employed</option>
+      <option>Private Job</option>
+      <option>Government Job</option>
+      <option>Others</option>
+    </select>
+  </div>
+
+</div>
+
+
+  <!-- ADDRESS SECTION -->
+<div style="margin-top:20px; padding:15px; background:#fff5f5; border-radius:12px;">
+
+  <h3 style="margin-bottom:15px; color:#d63384;">🏠 Address Details</h3>
+
+  <div class="two">
+    <div>
+      <label>Village</label>
+      <input name="Village" required />
+    </div>
+    <div>
+      <label>Post Office</label>
+      <input name="Post_Office" required />
+    </div>
+  </div>
+
+  <div class="two" style="margin-top:15px;">
+    <div>
+      <label>Gram Panchayat</label>
+      <input name="Gram_Panchayat" />
+    </div>
+    <div>
+  <label>Police Station</label>
+  <select name="Police_Station" required>
+    <option value="">-- Select Police Station --</option>
+    <option>Balurghat</option>
+    <option>Gangarampur</option>
+    <option>Tapan</option>
+    <option>Kushmandi</option>
+    <option>Kumarganj</option>
+    <option>Hili</option>
+    <option>Banshihari</option>
+    <option>Harirampur</option>
+  </select>
+</div>
+
+  </div>
+
+  <div class="two" style="margin-top:15px;">
+    <div>
+  <label>District</label>
+  <select name="District" required>
+    <option value="">-- Select District --</option>
+    <option>Dakshin Dinajpur</option>
+    <option>Uttar Dinajpur</option>
+    <option>Malda</option>
+    <option>Murshidabad</option>
+    <option>Birbhum</option>
+    <option>Purba Bardhaman</option>
+    <option>Paschim Bardhaman</option>
+    <option>Nadia</option>
+    <option>Hooghly</option>
+    <option>Howrah</option>
+    <option>North 24 Parganas</option>
+    <option>South 24 Parganas</option>
+    <option>Bankura</option>
+    <option>Purulia</option>
+    <option>Jhargram</option>
+    <option>Paschim Medinipur</option>
+    <option>Purba Medinipur</option>
+    <option>Kolkata</option>
+    <option>Alipurduar</option>
+    <option>Cooch Behar</option>
+    <option>Jalpaiguri</option>
+    <option>Darjeeling</option>
+    <option>Kalimpong</option>
+  </select>
+</div>
+
+    <div>
+      <label>Pin Code</label>
+      <input id="pin" name="Pin_Code" maxlength="6" pattern="\d*" inputmode="numeric" required />
+    </div>
+  </div>
+
+</div>
+
+  <!-- BANK DETAILS SECTION -->
+<div style="margin-top:20px; padding:15px; background:#f0f8ff; border-radius:12px;">
+
+  <h3 style="margin-bottom:15px; color:#0073ff;">🏦 Bank Details</h3>
+  <div class="two">
+    <div>
+      <label>Bank Name</label>
+      <select id="bank" name="Bank_Name" required>
+        <option value="">-- Select Bank --</option>
+        <option>Axis Bank</option>
+        <option>West Bengal Gramin Bank</option>
+        <option>Bank of Baroda</option>
+        <option>Bank of India</option>
+        <option>Canara Bank</option>
+        <option>Central Bank of India</option>
+        <option>HDFC Bank</option>
+        <option>ICICI Bank</option>
+        <option>IDBI Bank</option>
+        <option>Indian Bank</option>
+        <option>Indian Overseas Bank</option>
+        <option>Indian Post Payment Bank</option>
+        <option>IndusInd Bank</option>
+        <option>Kotak Mahindra Bank</option>
+        <option>Punjab National Bank</option>
+        <option>State Bank of India</option>
+        <option>UCO Bank</option>
+        <option>Union Bank of India</option>
+        <option>Yes Bank</option>
+      </select>
+    </div>
+    <div>
+      <label>Bank Branch Name</label>
+      <input name="Bank_Branch" required />
+    </div>
+  </div>
+
+  <div class="two">
+    <div>
+      <label>IFSC</label>
+      <input id="ifsc" name="IFSC" type="text" maxlength="11" required />
+    </div>
+    <div>
+      <label>Account Number</label>
+      <input  id="account"  name="Account_Number"  type="text"  maxlength="18"  pattern="\d*"  inputmode="numeric"  required/>
+
+    </div>
+  </div>
+</div>
+
+  <!-- CONTACT DETAILS SECTION -->
+<div style="margin-top:20px; padding:15px; background:#f0fff5; border-radius:12px;">
+
+  <h3 style="margin-bottom:15px; color:#198754;">📞 Contact Details</h3>
+  <div class="two">
+    <div>
+      <label>Mobile Number</label>
+      <input id="mobile" name="Mobile_Number" maxlength="10" pattern="\d*" inputmode="numeric" required />
+    </div>
+    <div>
+      <label>Email ID (optional)</label>
+      <input type="email" name="Email" />
+    </div>
+  </div>
+</div>
+
+  <!-- PHOTO -->
+  <label>Photo Upload (Max 1 MB)</label>
+  <input id="photo" name="Photo" type="file" accept="image/*" required />
+
+  <button type="submit" class="submit">Submit Registration Data</button>
+  <div id="status"></div>
+
+</form>
+
+  </div>
+</div>
+
+<script src="indexs.js"></script>
+
+</body>
+</html>
